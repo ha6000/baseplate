@@ -1,0 +1,10 @@
+{
+	"token": "",
+	"prefix": "!",
+	"handlers": ["command"],
+	"collections": [],
+	"intents": [],
+	"commandGroups": ["owner"],
+	"eventGroups": ["logging"],
+	"utils": []
+}

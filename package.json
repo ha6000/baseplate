@@ -1,0 +1,21 @@
+{
+  "name": "baseplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon src"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "ajv": "^6.12.3",
+    "chalk": "^4.1.0",
+    "discord.js": "^12.2.0",
+    "schema-js": "^1.1.0"
+  }
+}
