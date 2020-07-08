@@ -19,7 +19,7 @@ module.exports = async (client) => {
 		const utilName = utilFiles[i];
 		let util;
 		try {
-			util = require(path.join(utilsFolder, utilName));
+			util = require(join(utilsFolder, utilName));
 			if (!util) {
 				console.error('empty util');
 				continue;

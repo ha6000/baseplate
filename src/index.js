@@ -8,7 +8,7 @@ global.config = Object.assign({}, {
 	prefix: '!',
 	itents: ['GUILDS', 'GUILD_MESSAGES'],
 	collections: ['commands', 'aliases'],
-	handlers: ['command', 'event'],
+	handlers: ['command', 'event', 'utils'],
 	commandGroups: ['owner'],
 	eventGroups: ['logging', 'guild'],
 	utils: []
