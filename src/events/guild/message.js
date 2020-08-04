@@ -2,7 +2,7 @@ const { MessageEmbed, Collection } = discord;
 const prefix = config.prefix;
 
 module.exports = async (client, message) => {
-	if (message.author.bot || message.channel.type === 'dm') return;
+	if (message.author.bot) return;
 	if (!message.content.startsWith(prefix)) return;
 
 	// Gets command name and arguments
@@ -16,6 +16,7 @@ module.exports = async (client, message) => {
 
 	const commandFile = client.commands.get(cmd) || client.commands.get(client.aliases.get(cmd));
 	if (!commandFile) return;
+	if (!commandFile.dm && message.author.bot) return;
 	try {
 		await commandFile.run({ client, message, args, utils: client.utils, rawArgs, argString });
 	}
