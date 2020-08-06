@@ -9,7 +9,7 @@ module.exports = (client) => {
 		readdirSync(groupPath).filter(d => d.endsWith('.js'))
 		.forEach(file => {
 			let commandFile = require(join(groupPath, file));
-			if (!commandFile) return;
+			if (!commandFile || !commandFile.name || !commandFile.execute) return;
 			commandFile = Object.assign({}, {
 				aliases: []
 			}, commandFile);
