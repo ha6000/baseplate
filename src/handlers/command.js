@@ -18,7 +18,7 @@ module.exports = (client) => {
 				console.error(`${chalk.bgYellow('Failed')} loading command ${chalk.bold(file)}`);
 			}
 
-			if (!commandFile || !commandFile.name || !commandFile.execute) return;
+			if (!commandFile || !commandFile.name || !commandFile.run) return;
 			commandFile = Object.assign({}, {
 				aliases: []
 			}, commandFile);
