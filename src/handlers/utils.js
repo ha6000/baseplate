@@ -1,13 +1,5 @@
-const Ajv = require('ajv');
-const ajv = new Ajv();
 const { join } = require('path');
 const chalk = require('chalk');
-
-const validateUtil = ajv.compile({
-	name: { type: String },
-	construct: { type: Function },
-	required: ['name', 'construct']
-})
 
 const utilsFolder = join(__dirname, '../utils');
 
@@ -24,9 +16,13 @@ module.exports = async (client) => {
 				console.error('empty util');
 				continue;
 			}
-			const validUtil = validateUtil(util);
-			if (!validUtil) {
-				console.error(ajv.errorsText(validateUtil.errors));
+			if (typeof util.name != 'string') {
+				console.error(`Missing utility name ${chalk.bold(utilName)}`);
+				continue;
+			}
+			if (typeof util.construct != 'function') {
+				console.error('Missing utility construct function ${chalk.bold(utilName)}');
+				continue;
 			}
 			client.utils[util.name] = await util.construct(client);
 		}

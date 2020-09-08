@@ -1,8 +1,6 @@
 // Requiring modules
 
 global.discord = require('discord.js');
-const Ajv = require('ajv');
-const ajv = new Ajv();
 const chalk = require('chalk');
 global.config = Object.assign({}, {
 	prefix: '!',
@@ -13,21 +11,6 @@ global.config = Object.assign({}, {
 	eventGroups: ['logging', 'guild'],
 	utils: []
 }, require('../config.json'));
-
-// Validating config
-const validateConfig = ajv.compile({
-	token: { type: String, default: 'test'},
-	collections: { type: Array, items: String },
-	handlers: { type: Array, items: String },
-	commandGroups: { type: Array, items: String },
-	eventGroups: { type: Array, items: String },
-	utils: { type: Array, items: String },
-	required: ['token']
-});
-
-const configValid = validateConfig(config);
-
-if (!configValid) return console.error('Config invalid:', ajv.errorsText(validateConfig.errors));
 
 // Creating client
 const client = new discord.Client({ws: {intents: config.intents}});
